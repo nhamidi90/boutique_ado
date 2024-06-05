@@ -129,8 +129,9 @@
                         {% include 'includes/toasts/toast_warning.html' %}
                     {% elif level == 25 %}
                         {% include 'includes/toasts/toast_success.html' %}
-                    {% else level == 40 %}
+                    {% else %}
                         {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
                 {% endwith %}
             {% endfor %}
         </div>
