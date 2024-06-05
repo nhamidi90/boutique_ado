@@ -11,19 +11,34 @@ def bag_contents(request):
     bag = request.session.get('bag', {})
 
     # iterate through all items in shopping bag 
-    for item_id, quantity in bag.items():
-        # get the product
-        product = get_object_or_404(Product, pk=item_id)
-        # add to the total cost
-        total += quantity * product.price
-        # add to the product count
-        product_count += quantity
-        #append items to bag
-        bag_items.append({
-            'item_id': item_id,
-            'quantity': quantity,
-            'product': product,
-        })
+    for item_id, item_data in bag.items():
+        # only execute this is if item has no size
+        # done by checking if it's an integer which shows quantity
+        if isinstance(item_data, int):
+            # get the product
+            product = get_object_or_404(Product, pk=item_id)
+            # add to the total cost
+            total += item_data * product.price
+            # add to the product count
+            product_count += item_data
+            #append items to bag
+            bag_items.append({
+                'item_id': item_id,
+                'quantity': item_data,
+                'product': product,
+            })
+        else:
+            product = get_object_or_404(Product, pk=item_id)
+            # otherwise we know it's a dictionary so iterate through items_by_size
+            for size, quantity in item_data['items_by_size'].items():
+                total += quantity * product.price
+                product_count += quantity
+                bag_items.append({
+                    'item_id': item_id,
+                    'quantity': item_data,
+                    'product': product,
+                    'size': size,
+                })  
 
     # calculate shipping costs
     if total < settings.FREE_DELIVERY_THRESHOLD:
