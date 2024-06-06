@@ -16,7 +16,7 @@ def checkout(request):
     """ Create instance of order form """
     template = 'checkout/checkout.html'
     context = {
-        'order form': order_form,
+        'order_form': order_form,
     }
 
     return render(request, template, context)
