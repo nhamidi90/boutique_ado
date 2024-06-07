@@ -42,7 +42,7 @@ def bag_contents(request):
 
     # calculate shipping costs
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE)
+        delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
         # let user know how much more money they need to spend to get free delivery
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
