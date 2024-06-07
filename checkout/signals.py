@@ -5,7 +5,7 @@ from .models import OrderLineItem
 
 # to execute the function any time the post_save signal is sent, use receiver
 @receiver(post_save, sender=OrderLineItem)
-def update_on_save(sender, created, **kwargs):
+def update_on_save(sender, instance, created, **kwargs):
     """
     Update order total on lineitem update/create
     """
@@ -14,7 +14,7 @@ def update_on_save(sender, created, **kwargs):
 
 # update totals when item is deleted
 @receiver(post_delete, sender=OrderLineItem)
-def update_on_save(sender, **kwargs):
+def update_on_delete(sender, instance, **kwargs):
     """
     Update order total on lineitem delete
     """
