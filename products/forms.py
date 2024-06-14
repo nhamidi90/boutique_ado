@@ -15,7 +15,7 @@ class ProductForm(forms.ModelForm):
         friendly_names = [{c.id, c.get_friendly_name()} for c in categories]
 
         # update category field to show friendly name instead of id
-        self.field['category'].choices = friendly_names
+        self.fields['category'].choices = friendly_names
         # Iterate through the rest of these fields and set some classes on 
         # them to make them match the theme of the rest of the store.
         for fiels_name, field in self.fields.items():
