@@ -31,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '8000-nhamidi90-boutiqueado-sfzd0c4csq1.ws.codeinstitute-ide.net',
     'localhost'
-    'https://boutique-ado-nhamidi-3e4fde1aef0b.herokuapp.com/'
+    'boutique-ado-nhamidi-3e4fde1aef0b.herokuapp.com'
 ]
 
 
