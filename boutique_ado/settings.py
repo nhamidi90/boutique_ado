@@ -30,8 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-nhamidi90-boutiqueado-sfzd0c4csq1.ws.codeinstitute-ide.net',
-    'localhost'
-    'boutique-ado-nhamidi-3e4fde1aef0b.herokuapp.com'
+    'localhost',
+    'boutique-ado-nhamidi-3e4fde1aef0b.herokuapp.com',
 ]
 
 
